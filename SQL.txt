@@ -41,3 +41,22 @@ CREATE TABLE jobs (
 
 
 );
+
+CREATE TABLE jobs (
+	
+	id INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	name VARCHAR(50) NOT NULL,
+	title VARCHAR(50) NOT NULL,
+	description VARCHAR(200),
+	salary VARCHAR(50),
+	country VARCHAR(30),
+	experience VARCHAR(50),
+	approved VARCHAR(50),
+	available VARCHAR(100),
+	gender VARCHAR(20),
+	education VARCHAR(80),
+	more_info VARCHAR(100)
+	
+
+
+);
