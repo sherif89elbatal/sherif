@@ -1,0 +1,43 @@
+CREATE DATABASE Elbatal;
+
+CREATE TABLE USERS (
+
+	id INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	first_name VARCHAR(50) NOT NULL,
+	last_name  VARCHAR(50) NOT NULL,
+	email VARCHAR(100) NOT NULL UNIQUE,
+	password VARCHAR(50) NOT NULL,
+	role VARCHAR(50) NOT NULL DEFAULT 'user',
+	phone VARCHAR(120) UNIQUE,
+	country VARCHAR(50),
+	dob VARCHAR(30),
+	about VARCHAR(150),
+	salary VARCAHR(25),
+	experience VARCHAR(100),
+	current_position VARCHAR(100),
+	gender VARCHAR(20) NOT NULL,
+	image VARCHAR(5)
+
+
+
+);
+
+
+CREATE TABLE jobs (
+	
+	id INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	name VARCHAR(50) NOT NULL,
+	title VARCHAR(50) NOT NULL,
+	description VARCHAR(200),
+	salary VARCHAR(50),
+	country VARCHAR(30),
+	experience VARCHAR(50),
+	approved VARCHAR(50),
+	available VARCHAR(100),
+	gender VARCHAR(20),
+	education VARCHAR(80),
+	more_info VARCHAR(100)
+	
+
+
+);

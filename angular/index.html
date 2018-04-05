@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Angular Tutorial</title>
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="styles.css">
+
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>
+
+	<script type="text/javascript">
+		var app = angular.module('za8lol', ['ui.bootstrap']);  
+		app.controller('test', function($scope, $http){
+			$scope.visits = [];
+			$scope.pag = {page: 1, amount : 10, q: ''};
+			$scope.total = 0;
+
+			$scope.search = function(){
+				$http.get('http://localhost/Elbatal/angular/data.php', {params : $scope.pag}).then(function(res){
+					$scope.visits = res.data.data;
+					$scope.total  = res.data.total;
+				});
+			}
+			$scope.search();
+		})
+	</script>
+
+	</head>
+	<body ng-app="za8lol">
+
+		<div class="container-fluid" ng-controller="test">
+
+
+	    <ul uib-pagination total-items="total" ng-model="pag.page" max-size="5" class="pagination-sm" boundary-links="true" ng-change="search()" force-ellipses="true" items-per-page="pag.amount"></ul>
+
+			<div>
+				{{ pag }}
+				<form>
+					<input type="text" ng-model="pag.q">
+					<button ng-click="search()">Search</button>
+					<select ng-model="pag.amount" ng-change="search()">
+						<option value="10">10</option>
+						<option value="25">25</option>
+						<option value="50">50</option>
+						<option value="100">100</option>
+					</select>
+				</form>
+			</div>
+			<div class="row">
+				<div class="col-xs-12 sub">
+					<table class="table">
+						<thead>
+							<tr>
+								<th>Path</th>
+								<th>Full Url</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="x in visits">
+								<td>{{ x.Path }}</td>
+								<td>{{ x.Full_url }}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+
+			</div>
+		</div>
+
+	</body>
+</html>
